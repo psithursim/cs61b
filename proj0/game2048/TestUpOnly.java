@@ -85,7 +85,7 @@ public class TestUpOnly extends TestUtils {
      *
      * The tricky part here is that the 4 tile on the bottom row shouldn't
      * merge with the newly created 4 tile on the top row. If you're failing
-     * this test, try seeing how you can ensure that the bottom 4 tile doesn't
+     * this test, try.java seeing how you can ensure that the bottom 4 tile doesn't
      * merge with the newly created 4 tile on top.*/
     public void testUpTrickyMerge() {
         int[][] before = new int[][] {

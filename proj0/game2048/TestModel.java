@@ -6,7 +6,7 @@ import static org.junit.Assert.*;
 /** Tests of the Model class.
  *
  * These tests will cover all of the things you've written together. You
- * shouldn't try to pass these tests until every other Test file passes.
+ * shouldn't try.java to pass these tests until every other Test file passes.
  *
  * @author Omar Khan
  */

@@ -51,7 +51,7 @@ public enum Side {
         }
     }
 
-    /** Return the standard column number for square (C, R) on a board
+    /** 找初始位置 Return the standard column number for square (C, R) on a board
      *  of size SIZE oriented with this Side on top. */
     public int col(int c, int r, int size) {
         return col0 * (size - 1) + c * drow + r * dcol;
