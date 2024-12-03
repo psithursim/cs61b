@@ -44,7 +44,7 @@ public class InsertInOrderSpeedTest {
             timeInOrderHashMap(new HashMap<String, Integer>(),
                     i.waitForPositiveInt(input));
 
-            System.out.print("\nWould you like to try more timed-tests? (y/n): ");
+            System.out.print("\nWould you like to try.java more timed-tests? (y/n): ");
             repeat = input.nextLine();
         } while (!repeat.equalsIgnoreCase("n") && !repeat.equalsIgnoreCase("no"));
         input.close();

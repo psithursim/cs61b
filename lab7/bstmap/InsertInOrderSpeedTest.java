@@ -36,7 +36,7 @@ public class InsertInOrderSpeedTest {
             timeInOrderTreeMap(new TreeMap<>(), N);
             timeInOrderHashMap(new HashMap<>(), N);
 
-            System.out.print("Would you like to try more timed-tests? (y/n): ");
+            System.out.print("Would you like to try.java more timed-tests? (y/n): ");
             repeat = input.nextLine();
         } while (!repeat.equalsIgnoreCase("n") && !repeat.equalsIgnoreCase("no"));
         input.close();

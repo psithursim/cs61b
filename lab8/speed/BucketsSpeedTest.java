@@ -43,7 +43,7 @@ public class BucketsSpeedTest {
             timeRandomMap61B(new MyHashMapHSBuckets<>(), N, L);
             timeRandomMap61B(new MyHashMapPQBuckets<>(), N, L);
 
-            System.out.print("\nWould you like to try more timed-tests? (y/n)");
+            System.out.print("\nWould you like to try.java more timed-tests? (y/n)");
             repeat = input.nextLine();
         } while (!repeat.equalsIgnoreCase("n") && !repeat.equalsIgnoreCase("no"));
         input.close();

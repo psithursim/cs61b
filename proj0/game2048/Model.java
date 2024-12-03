@@ -127,7 +127,7 @@ public class Model extends Observable {
                         changed = true;
                         number = this.board.tile(col, temp).value();
                         this.board.move(col, temp + 1, this.board.tile(col, temp));
-                        end--;
+                        end = temp;
                         score += number * 2;
                     }
                 }

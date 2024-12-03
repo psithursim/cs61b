@@ -12,7 +12,7 @@ import java.awt.Color;
  * Ex:
  *      world[x][y] = Tileset.FLOOR;
  *
- * The style checker may crash when you try to style check this file due to use of unicode
+ * The style checker may crash when you try.java to style check this file due to use of unicode
  * characters. This is OK.
  */
 

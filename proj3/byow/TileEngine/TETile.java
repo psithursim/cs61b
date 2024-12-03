@@ -47,7 +47,7 @@ public class TETile {
 
     /**
      * Constructor without filepath. In this case, filepath will be null, so when drawing, we
-     * will not even try to draw an image, and will instead use the provided character and colors.
+     * will not even try.java to draw an image, and will instead use the provided character and colors.
      * @param character The character displayed on the screen.
      * @param textColor The color of the character itself.
      * @param backgroundColor The color drawn behind the character.

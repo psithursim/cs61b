@@ -24,7 +24,7 @@ public class CheckLabConfig {
 		if (value == null) {
 			System.out.println("ERROR! Environment variable " + name + " is not set.");
 			System.out.println("If you've already set it using the lab 1 setup directions, " +
-				               "then try restarting your terminal or IntelliJ.");
+				               "then try.java restarting your terminal or IntelliJ.");
 			System.exit(1);
 		}
 	}

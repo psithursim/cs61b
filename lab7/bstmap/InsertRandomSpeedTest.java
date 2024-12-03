@@ -34,7 +34,7 @@ public class InsertRandomSpeedTest {
             timeRandomTreeMap(new TreeMap<>(), N, L);
             timeRandomHashMap(new HashMap<>(), N, L);
 
-            System.out.print("Would you like to try more timed-tests? (y/n)");
+            System.out.print("Would you like to try.java more timed-tests? (y/n)");
             repeat = input.nextLine();
         } while (!repeat.equalsIgnoreCase("n") && !repeat.equalsIgnoreCase("no"));
         input.close();
