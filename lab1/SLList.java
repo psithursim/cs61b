@@ -41,4 +41,21 @@ public class SLList<T> {
         }
         p.next = new IntNode<T>(x, null);
     }
+
+    public T removeLast() {
+        IntNode<T> p = first;
+        while (p.next.next != null) {
+            p = p.next;
+        }
+        T item = p.next.item;
+        p.next = null;
+        return item;
+    }
+
+    public void print() {
+        IntNode<T> p = first;
+        while (p != null) {
+            System.out.print(p.item + " ");
+        }
+    }
 }
