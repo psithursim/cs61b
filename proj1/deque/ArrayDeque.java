@@ -65,6 +65,7 @@ public class ArrayDeque<T> {
         deque[head] = null;
         head = (head + 1 + deque.length) % deque.length;
         size--;
+        return item;
     }
 
     public T removeLast() {
@@ -78,6 +79,7 @@ public class ArrayDeque<T> {
         deque[tail] = null;
         tail = (tail - 1 + deque.length) % deque.length;
         size--;
+        return item;
     }
 
     public T get(int index) {
