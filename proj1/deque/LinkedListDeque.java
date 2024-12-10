@@ -1,7 +1,7 @@
 package deque;
 
 public class LinkedListDeque<T> {
-    public class IntNode<T> {
+    public static class IntNode<T> {
         public IntNode<T> pre;
         public T data;
         public IntNode<T> next;

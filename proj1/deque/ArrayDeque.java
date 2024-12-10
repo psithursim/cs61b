@@ -10,7 +10,7 @@ public class ArrayDeque<T> {
         deque = (T[]) new Object[8];
         size = 0;
         head = 0;
-        tail = 0;
+        tail = -1;
     }
 
     public void resize(int newSize) {
@@ -19,6 +19,8 @@ public class ArrayDeque<T> {
             newDeque[i] = deque[(head + i) % deque.length];
         }
         deque = newDeque;
+        head = 0;
+        tail = size - 1;
     }
 
     public void addFirst(T item) {
@@ -34,7 +36,7 @@ public class ArrayDeque<T> {
         if (size == deque.length) {
             resize(size * 2);
         }
-        tail++;
+        tail = (tail + 1 + deque.length) % deque.length;
         deque[tail] = item;
         size++;
     }
@@ -73,7 +75,7 @@ public class ArrayDeque<T> {
             return null;
         }
         if (size < deque.length / 4) {
-            resize(size / 4);
+            resize(deque.length / 4);
         }
         T item = deque[tail];
         deque[tail] = null;
