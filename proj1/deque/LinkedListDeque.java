@@ -22,9 +22,11 @@ public class LinkedListDeque<T> {
             pre = null;
             data = item;
             next = newnode;
+            newnode.pre = this;
         }
 
         public IntNode(IntNode<T> newnode, T item) {
+            newnode.next = this;
             pre = newnode;
             data = item;
             next = null;

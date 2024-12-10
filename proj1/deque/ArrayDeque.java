@@ -1,10 +1,10 @@
 package deque;
 
 public class ArrayDeque<T> {
-    private T[] deque;
-    private int size;
-    private int head;
-    private int tail;
+    public T[] deque;
+    public int size;
+    public int head;
+    public int tail;
 
     public ArrayDeque() {
         deque = (T[]) new Object[8];
