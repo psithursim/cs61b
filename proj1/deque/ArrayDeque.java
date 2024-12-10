@@ -59,7 +59,7 @@ public class ArrayDeque<T> {
             return null;
         }
         if (size < deque.length / 4) {
-            resize(size / 4);
+            resize(deque.length / 4);
         }
         T item = deque[head];
         deque[head] = null;
