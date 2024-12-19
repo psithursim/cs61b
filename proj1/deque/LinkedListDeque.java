@@ -1,6 +1,6 @@
 package deque;
 
-public class LinkedListDeque<T> {
+public class LinkedListDeque<T> implements Deque<T> {
     public static class IntNode<T> {
         public IntNode<T> pre;
         public T data;
@@ -41,8 +41,6 @@ public class LinkedListDeque<T> {
         last = new IntNode<>();
         first.next = last;
         last.pre = first;
-        last.next = first;
-        first.pre = last;
         size = 0;
     }
 
@@ -52,8 +50,6 @@ public class LinkedListDeque<T> {
         last = new IntNode<>();
         newnode.next = last;
         last.pre = newnode;
-        last.next = first;
-        first.pre = last;
         size = 1;
     }
 
@@ -71,10 +67,6 @@ public class LinkedListDeque<T> {
         newnode.pre = temp;
         temp.next = newnode;
         size++;
-    }
-
-    public boolean isEmpty() {
-        return size == 0;
     }
 
     public int size() {

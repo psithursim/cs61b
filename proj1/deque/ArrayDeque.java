@@ -1,10 +1,10 @@
 package deque;
 
-public class ArrayDeque<T> {
-    public T[] deque;
-    public int size;
-    public int head;
-    public int tail;
+public class ArrayDeque<T> implements Deque<T> {
+    private T[] deque;
+    private int size;
+    private int head;
+    private int tail;
 
     public ArrayDeque() {
         deque = (T[]) new Object[8];
@@ -39,10 +39,6 @@ public class ArrayDeque<T> {
         tail = (tail + 1 + deque.length) % deque.length;
         deque[tail] = item;
         size++;
-    }
-
-    public boolean isEmpty() {
-        return size == 0;
     }
 
     public int size() {
