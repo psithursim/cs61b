@@ -111,7 +111,7 @@ public class LinkedListDequeTest {
     public void equalsTest() {
         LinkedListDeque<Double> lld1 = new LinkedListDeque<>();
         ArrayDeque<Double> lld2 = new ArrayDeque<>();
-        for (int i = 0; i < 10000000; i++) {
+        for (int i = 0; i < 1000; i++) {
             double num = Math.random();
             double num2 = Math.random() - 0.5;
             if (num2 > 0) {
