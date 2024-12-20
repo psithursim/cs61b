@@ -1,5 +1,7 @@
 package deque;
 
+import org.junit.Test;
+
 import java.util.Iterator;
 
 public class LinkedListDeque<T> implements Deque<T>, Iterable<T> {
@@ -130,7 +132,8 @@ public class LinkedListDeque<T> implements Deque<T>, Iterable<T> {
         return cursive(temp, pos, index);
     }
 
-    public String tostring() {
+    @Override
+    public String toString() {
         StringBuilder str = new StringBuilder();
         IntNode<T> temp = first.next;
         while (temp != last) {
@@ -174,6 +177,6 @@ public class LinkedListDeque<T> implements Deque<T>, Iterable<T> {
         if (size() != that.size()) {
             return false;
         }
-        return tostring().equals(that.tostring());
+        return toString().equals(that.toString());
     }
 }
