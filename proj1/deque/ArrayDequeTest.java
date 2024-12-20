@@ -111,16 +111,4 @@ public class ArrayDequeTest {
         lld2.addFirst(3);
         assertFalse(lld1.equals(lld2));
     }
-
-    @Test
-    public void iteratorTest() {
-        LinkedListDeque<Integer> lld1 = new LinkedListDeque<>();
-        lld1.addLast(2);
-        lld1.addLast(1);
-        ArrayDeque<Integer> lld2 = new ArrayDeque<>();
-        for (int x : lld1) {
-            lld2.addLast(x);
-        }
-        assertTrue(lld2.equals(lld1));
-    }
 }

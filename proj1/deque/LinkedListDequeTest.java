@@ -110,14 +110,13 @@ public class LinkedListDequeTest {
     @Test
     public void equalsTest() {
         LinkedListDeque<Integer> lld1 = new LinkedListDeque<>();
-        lld1.addFirst(2);
-        lld1.addFirst(2);
-        lld1.addLast(3);
+        for (int i = 0; i < 100; i++) {
+            lld1.addLast(i);
+        }
         ArrayDeque<Integer> lld2 = new ArrayDeque<>();
-        lld2.addFirst(2);
-        lld2.addFirst(2);
-        lld2.addLast(3);
+        for (int i = 0; i < 100; i++) {
+            lld2.addLast(i);
+        }
         assertTrue(lld1.equals(lld2));
     }
-
 }

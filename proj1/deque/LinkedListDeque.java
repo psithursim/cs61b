@@ -173,7 +173,7 @@ public class LinkedListDeque<T> implements Deque<T>, Iterable<T> {
         }
         IntNode<T> temp = first.next;
         for (T x : (Iterable<T>) that) {
-            if (temp.data.equals(x)) {
+            if (!temp.data.equals(x)) {
                 return false;
             }
             temp = temp.next;
