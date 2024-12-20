@@ -88,8 +88,7 @@ public class ArrayDeque<T> implements Deque<T>, Iterable<T> {
         return deque[temp];
     }
 
-    @Override
-    public String toString() {
+    public String maketoString() {
         StringBuilder str = new StringBuilder();
         int pos = (head + 1) % deque.length;
         while (pos != tail) {
@@ -133,7 +132,7 @@ public class ArrayDeque<T> implements Deque<T>, Iterable<T> {
         if (size() != that.size()) {
             return false;
         }
-        return toString().equals(that.toString());
+        return maketoString().equals(that.maketoString());
     }
 
 }
