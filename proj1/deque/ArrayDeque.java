@@ -26,6 +26,7 @@ public class ArrayDeque<T> implements Deque<T>, Iterable<T> {
         tail = size;
     }
 
+    @Override
     public void addFirst(T item) {
         if (size == deque.length) {
             resize(size * 2);
@@ -35,6 +36,7 @@ public class ArrayDeque<T> implements Deque<T>, Iterable<T> {
         size++;
     }
 
+    @Override
     public void addLast(T item) {
         if (size == deque.length) {
             resize(size * 2);
@@ -44,10 +46,12 @@ public class ArrayDeque<T> implements Deque<T>, Iterable<T> {
         size++;
     }
 
+    @Override
     public int size() {
         return size;
     }
 
+    @Override
     public void printDeque() {
         for (int i = 0; i < size; i++) {
             System.out.print(deque[(head + i) % deque.length] + " ");
@@ -55,6 +59,7 @@ public class ArrayDeque<T> implements Deque<T>, Iterable<T> {
         System.out.println();
     }
 
+    @Override
     public T removeFirst() {
         if (isEmpty()) {
             return null;
@@ -69,6 +74,7 @@ public class ArrayDeque<T> implements Deque<T>, Iterable<T> {
         return item;
     }
 
+    @Override
     public T removeLast() {
         if (isEmpty()) {
             return null;
@@ -83,6 +89,7 @@ public class ArrayDeque<T> implements Deque<T>, Iterable<T> {
         return item;
     }
 
+    @Override
     public T get(int index) {
         int temp = (head + 1 + index) % deque.length;
         return deque[temp];
@@ -100,17 +107,20 @@ public class ArrayDeque<T> implements Deque<T>, Iterable<T> {
             pos = head;
         }
 
+        @Override
         public boolean hasNext() {
             int temp = (pos + 1) % deque.length;
             return temp != tail;
         }
 
+        @Override
         public T next() {
             pos = (pos + 1) % deque.length;
             return deque[pos];
         }
     }
 
+    @Override
     public boolean equals(Object o) {
         if (this == o) {
             return true;
@@ -129,12 +139,12 @@ public class ArrayDeque<T> implements Deque<T>, Iterable<T> {
         if (size() != that.size()) {
             return false;
         }
-        int pos = (head + 1) % deque.length;
-        for (T x : (Iterable<T>) that) {
-            if (!deque[pos].equals(x)) {
+        Iterator<T> thisIterator = iterator();
+        Iterator<T> thatIterator = that.iterator();
+        while (thisIterator.hasNext() && thatIterator.hasNext()) {
+            if (!thisIterator.next().equals(thatIterator.next())) {
                 return false;
             }
-            pos = (pos + 1) % deque.length;
         }
         return true;
     }

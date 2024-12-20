@@ -106,9 +106,9 @@ public class ArrayDequeTest {
         lld1.addLast(2);
         lld1.addLast(3);
         ArrayDeque<Integer> lld2 = new ArrayDeque<>();
-        lld2.addLast(1);
-        lld2.addFirst(2);
-        lld2.addFirst(3);
-        assertFalse(lld1.equals(lld2));
+        lld2.addLast(2);
+        lld2.addFirst(1);
+        lld2.addLast(3);
+        assertTrue(lld1.equals(lld2));
     }
 }

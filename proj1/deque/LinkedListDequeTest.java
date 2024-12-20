@@ -109,13 +109,21 @@ public class LinkedListDequeTest {
 
     @Test
     public void equalsTest() {
-        LinkedListDeque<Integer> lld1 = new LinkedListDeque<>();
-        for (int i = 0; i < 100; i++) {
-            lld1.addLast(i);
-        }
-        ArrayDeque<Integer> lld2 = new ArrayDeque<>();
-        for (int i = 0; i < 100; i++) {
-            lld2.addLast(i);
+        LinkedListDeque<Double> lld1 = new LinkedListDeque<>();
+        ArrayDeque<Double> lld2 = new ArrayDeque<>();
+        for (int i = 0; i < 10000000; i++) {
+            double num = Math.random();
+            double num2 = Math.random() - 0.5;
+            if (num2 > 0) {
+                lld1.addLast(num);
+                lld2.addLast(num);
+            } else if (num2 < 0) {
+                lld1.addFirst(num);
+                lld2.addFirst(num);
+            } else {
+                lld1.removeFirst();
+                lld2.removeFirst();
+            }
         }
         assertTrue(lld1.equals(lld2));
     }
