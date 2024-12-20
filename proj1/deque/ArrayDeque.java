@@ -118,13 +118,20 @@ public class ArrayDeque<T> implements Deque<T>, Iterable<T> {
         if (o == null) {
             return false;
         }
-        Deque<T> that = (Deque<T>) o;
+        Deque<T> that;
+        if (o instanceof ArrayDeque) {
+            that = (ArrayDeque<T>) o;
+        } else if (o instanceof LinkedListDeque) {
+            that = (LinkedListDeque<T>) o;
+        } else {
+            return false;
+        }
         if (size() != that.size()) {
             return false;
         }
         int pos = (head + 1) % deque.length;
         for (T x : that) {
-            if (deque[pos] != x) {
+            if (deque[pos].equals(x)) {
                 return false;
             }
             pos = (pos + 1) % deque.length;
