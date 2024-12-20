@@ -130,7 +130,7 @@ public class ArrayDeque<T> implements Deque<T>, Iterable<T> {
             return false;
         }
         int pos = (head + 1) % deque.length;
-        for (T x : that) {
+        for (T x : (Iterable<T>) that) {
             if (deque[pos].equals(x)) {
                 return false;
             }

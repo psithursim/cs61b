@@ -1,7 +1,5 @@
 package deque;
 
-import org.junit.Test;
-
 import java.util.Iterator;
 
 public class LinkedListDeque<T> implements Deque<T>, Iterable<T> {
@@ -174,7 +172,7 @@ public class LinkedListDeque<T> implements Deque<T>, Iterable<T> {
             return false;
         }
         IntNode<T> temp = first.next;
-        for (T x : that) {
+        for (T x : (Iterable<T>) that) {
             if (temp.data.equals(x)) {
                 return false;
             }
