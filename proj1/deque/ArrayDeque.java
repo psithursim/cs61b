@@ -2,7 +2,7 @@ package deque;
 
 import java.util.Iterator;
 
-public class ArrayDeque<T> implements Deque<T>, Iterable<T>{
+public class ArrayDeque<T> implements Deque<T>, Iterable<T> {
     private T[] deque;
     private int size;
     //将放入的位置
@@ -16,7 +16,7 @@ public class ArrayDeque<T> implements Deque<T>, Iterable<T>{
         tail = 1;
     }
 
-    public void resize(int newSize) {
+    private void resize(int newSize) {
         T[] newDeque = (T[]) new Object[newSize];
         for (int i = 0; i < size; i++) {
             newDeque[i] = deque[(head + 1 + i) % deque.length];
@@ -88,39 +88,51 @@ public class ArrayDeque<T> implements Deque<T>, Iterable<T>{
         return deque[temp];
     }
 
-    public Iterator<T> iterator() {
-        return new ArrayDequeIerator();
+    public String tostring() {
+        StringBuilder str = new StringBuilder();
+        int pos = (head + 1) % deque.length;
+        while (pos != tail) {
+            str.append(deque[pos]).append(" ");
+            pos = (pos + 1) % deque.length;
+        }
+        return str.toString();
     }
 
-    private class ArrayDequeIerator implements Iterator<T> {
-        private int pos;
-        private int cnt;
+    @Override
+    public Iterator<T> iterator() {
+        return new ArrayDequeIterator();
+    }
 
-        public ArrayDequeIerator() {
+    private class ArrayDequeIterator implements Iterator<T> {
+        private int pos;
+
+        ArrayDequeIterator() {
             pos = head;
         }
 
         public boolean hasNext() {
-            return cnt < size;
+            int temp = (pos + 1) % deque.length;
+            return temp != tail;
         }
 
         public T next() {
             pos = (pos + 1) % deque.length;
-            T returnItem = deque[pos];
-            cnt++;
-            return returnItem;
+            return deque[pos];
         }
     }
 
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        ArrayDeque<T> that = (ArrayDeque<T>) o;
-        if (size != that.size) return false;
-        for (int i = head; i < tail; i++) {
-            if (!deque[i].equals(that.deque[i])) return false;
+        if (this == o) {
+            return true;
         }
-        return true;
+        if (o == null) {
+            return false;
+        }
+        ArrayDeque<T> that = (ArrayDeque<T>) o;
+        if (size() != that.size()) {
+            return false;
+        }
+        return tostring().equals(that.tostring());
     }
 
 }

@@ -108,15 +108,15 @@ public class LinkedListDequeTest {
     }
 
     @Test
-    public void iterequalsTest() {
+    public void equalsTest() {
         LinkedListDeque<Integer> lld1 = new LinkedListDeque<>();
-        lld1.addFirst(1);
         lld1.addFirst(2);
-        lld1.addFirst(3);
-        LinkedListDeque<Integer> lld2 = new LinkedListDeque<>();
-        lld2.addFirst(1);
+        lld1.addFirst(2);
+        lld1.addLast(3);
+        ArrayDeque<Integer> lld2 = new ArrayDeque<>();
         lld2.addFirst(2);
-        lld2.addFirst(3);
+        lld2.addFirst(2);
+        lld2.addLast(3);
         assertTrue(lld1.equals(lld2));
     }
 

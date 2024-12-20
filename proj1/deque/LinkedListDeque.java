@@ -3,7 +3,7 @@ package deque;
 import java.util.Iterator;
 
 public class LinkedListDeque<T> implements Deque<T>, Iterable<T> {
-    public static class IntNode<T> {
+    private static class IntNode<T> {
         private IntNode<T> pre;
         private T data;
         private IntNode<T> next;
@@ -46,15 +46,6 @@ public class LinkedListDeque<T> implements Deque<T>, Iterable<T> {
         size = 0;
     }
 
-    public LinkedListDeque(T item) {
-        first = new IntNode<>();
-        IntNode<T> newnode = new IntNode<>(first, item);
-        last = new IntNode<>();
-        newnode.next = last;
-        last.pre = newnode;
-        size = 1;
-    }
-
     public void addFirst(T item) {
         IntNode<T> temp = first.next;
         IntNode<T> newnode = new IntNode<>(first, item);
@@ -82,16 +73,6 @@ public class LinkedListDeque<T> implements Deque<T>, Iterable<T> {
             temp = temp.next;
         }
         System.out.println();
-    }
-
-    public String toString() {
-        StringBuilder str = new StringBuilder();
-        IntNode<T> temp = first.next;
-        while (temp != last) {
-            str.append(temp.data + " ");
-            temp = temp.next;
-        }
-        return str.toString();
     }
 
     public T removeFirst() {
@@ -125,28 +106,38 @@ public class LinkedListDeque<T> implements Deque<T>, Iterable<T> {
             return null;
         }
         IntNode<T> temp = first;
-        for (int i = 1; i <= index; i++) {
+        for (int i = 0; i <= index; i++) {
             temp = temp.next;
         }
         return temp.data;
     }
 
     public T getRecursive(int index) {
-        if (index <= 0 || index > size) {
+        if (index < 0 || index > size) {
             return null;
         }
         int pos = 0;
-        IntNode<T> temp = first;
+        IntNode<T> temp = first.next;
         return cursive(temp, pos, index);
     }
 
-    public T cursive(IntNode<T> temp, int pos, int index) {
+    private T cursive(IntNode<T> temp, int pos, int index) {
         if (pos == index) {
             return temp.data;
         }
         pos++;
         temp = temp.next;
         return cursive(temp, pos, index);
+    }
+
+    public String tostring() {
+        StringBuilder str = new StringBuilder();
+        IntNode<T> temp = first.next;
+        while (temp != last) {
+            str.append(temp.data + " ");
+            temp = temp.next;
+        }
+        return str.toString();
     }
 
     public Iterator<T> iterator() {
@@ -156,7 +147,7 @@ public class LinkedListDeque<T> implements Deque<T>, Iterable<T> {
     private class LinkedListDequeIerator implements Iterator<T> {
         private IntNode<T> now;
 
-        public LinkedListDequeIerator() {
+        LinkedListDequeIerator() {
             now = first;
         }
 
@@ -171,14 +162,18 @@ public class LinkedListDeque<T> implements Deque<T>, Iterable<T> {
         }
     }
 
+    @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        LinkedListDeque<T> that = (LinkedListDeque<T>) o;
-        if (size != that.size) return false;
-        if (toString().equals(that.toString())) {
+        if (this == o) {
             return true;
         }
-        return false;
+        if (o == null) {
+            return false;
+        }
+        Deque<T> that = (Deque<T>) o;
+        if (size() != that.size()) {
+            return false;
+        }
+        return tostring().equals(that.tostring());
     }
 }
