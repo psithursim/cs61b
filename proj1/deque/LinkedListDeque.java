@@ -1,10 +1,12 @@
 package deque;
 
-public class LinkedListDeque<T> implements Deque<T> {
+import java.util.Iterator;
+
+public class LinkedListDeque<T> implements Deque<T>, Iterable<T> {
     public static class IntNode<T> {
-        public IntNode<T> pre;
-        public T data;
-        public IntNode<T> next;
+        private IntNode<T> pre;
+        private T data;
+        private IntNode<T> next;
 
         public IntNode() {
             pre = null;
@@ -34,7 +36,7 @@ public class LinkedListDeque<T> implements Deque<T> {
     }
     private IntNode<T> first;
     private IntNode<T> last;
-    public int size;
+    private int size;
 
     public LinkedListDeque() {
         first = new IntNode<>();
@@ -80,6 +82,16 @@ public class LinkedListDeque<T> implements Deque<T> {
             temp = temp.next;
         }
         System.out.println();
+    }
+
+    public String toString() {
+        StringBuilder str = new StringBuilder();
+        IntNode<T> temp = first.next;
+        while (temp != last) {
+            str.append(temp.data + " ");
+            temp = temp.next;
+        }
+        return str.toString();
     }
 
     public T removeFirst() {
@@ -137,4 +149,36 @@ public class LinkedListDeque<T> implements Deque<T> {
         return cursive(temp, pos, index);
     }
 
+    public Iterator<T> iterator() {
+        return new LinkedListDequeIerator();
+    }
+
+    private class LinkedListDequeIerator implements Iterator<T> {
+        private IntNode<T> now;
+
+        public LinkedListDequeIerator() {
+            now = first;
+        }
+
+        public boolean hasNext() {
+            return now.next != last;
+        }
+
+        public T next() {
+            now = now.next;
+            T returnItem = now.data;
+            return returnItem;
+        }
+    }
+
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        LinkedListDeque<T> that = (LinkedListDeque<T>) o;
+        if (size != that.size) return false;
+        if (toString().equals(that.toString())) {
+            return true;
+        }
+        return false;
+    }
 }

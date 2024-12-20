@@ -98,4 +98,19 @@ public class ArrayDequeTest {
             assertEquals("Should have the same value", i, (double) lld1.removeLast(), 0.0);
         }
     }
+
+    @Test
+    public void iterequalsTest() {
+        ArrayDeque<Integer> lld1 = new ArrayDeque<>();
+        lld1.addFirst(1);
+        lld1.addFirst(2);
+        lld1.addFirst(3);
+        ArrayDeque<Integer> lld2 = new ArrayDeque<>();
+        lld2.addFirst(1);
+        lld2.addFirst(2);
+        lld2.addFirst(3);
+        for (int x : lld1) {
+            assertTrue(x == lld2.removeFirst());
+        }
+    }
 }

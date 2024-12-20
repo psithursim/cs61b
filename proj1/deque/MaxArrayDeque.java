@@ -18,7 +18,7 @@ public class MaxArrayDeque<T> extends ArrayDeque<T> {
             return false;
         }
         for (int i = 0; i < queue.size(); i++) {
-            if (queue.get(i).equals(get(i))) {
+            if (!queue.get(i).equals(get(i))) {
                 return false;
             }
         }
