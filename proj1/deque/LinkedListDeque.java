@@ -1,5 +1,7 @@
 package deque;
 
+import org.junit.Test;
+
 import java.util.Iterator;
 
 public class LinkedListDeque<T> implements Deque<T>, Iterable<T> {
@@ -130,16 +132,6 @@ public class LinkedListDeque<T> implements Deque<T>, Iterable<T> {
         return cursive(temp, pos, index);
     }
 
-    public String maketoString() {
-        StringBuilder str = new StringBuilder();
-        IntNode<T> temp = first.next;
-        while (temp != last) {
-            str.append(temp.data + " ");
-            temp = temp.next;
-        }
-        return str.toString();
-    }
-
     public Iterator<T> iterator() {
         return new LinkedListDequeIerator();
     }
@@ -170,15 +162,17 @@ public class LinkedListDeque<T> implements Deque<T>, Iterable<T> {
         if (o == null) {
             return false;
         }
-        Deque<T> that;
-        if (getClass() != o.getClass()) {
-            that = (ArrayDeque<T>) o;
-        } else {
-            that = (LinkedListDeque<T>) o;
-        }
+        Deque<T> that = (Deque<T>) o;
         if (size() != that.size()) {
             return false;
         }
-        return maketoString().equals(that.maketoString());
+        IntNode<T> temp = first.next;
+        for (T x : that) {
+            if (temp.data != x) {
+                return false;
+            }
+            temp = temp.next;
+        }
+        return true;
     }
 }

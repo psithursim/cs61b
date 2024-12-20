@@ -88,16 +88,6 @@ public class ArrayDeque<T> implements Deque<T>, Iterable<T> {
         return deque[temp];
     }
 
-    public String maketoString() {
-        StringBuilder str = new StringBuilder();
-        int pos = (head + 1) % deque.length;
-        while (pos != tail) {
-            str.append(deque[pos]).append(" ");
-            pos = (pos + 1) % deque.length;
-        }
-        return str.toString();
-    }
-
     @Override
     public Iterator<T> iterator() {
         return new ArrayDequeIterator();
@@ -128,15 +118,17 @@ public class ArrayDeque<T> implements Deque<T>, Iterable<T> {
         if (o == null) {
             return false;
         }
-        Deque<T> that;
-        if (getClass() != o.getClass()) {
-            that = (LinkedListDeque<T>) o;
-        } else {
-            that = (ArrayDeque<T>) o;
-        }
+        Deque<T> that = (Deque<T>) o;
         if (size() != that.size()) {
             return false;
         }
-        return maketoString().equals(that.maketoString());
+        int pos = (head + 1) % deque.length;
+        for (T x : that) {
+            if (deque[pos] != x) {
+                return false;
+            }
+            pos = (pos + 1) % deque.length;
+        }
+        return true;
     }
 }
