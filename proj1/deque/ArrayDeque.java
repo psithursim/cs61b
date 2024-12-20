@@ -128,11 +128,15 @@ public class ArrayDeque<T> implements Deque<T>, Iterable<T> {
         if (o == null) {
             return false;
         }
-        Deque<T> that = (Deque<T>) o;
+        Deque<T> that;
+        if (getClass() != o.getClass()) {
+            that = (LinkedListDeque<T>) o;
+        } else {
+            that = (ArrayDeque<T>) o;
+        }
         if (size() != that.size()) {
             return false;
         }
         return maketoString().equals(that.maketoString());
     }
-
 }
