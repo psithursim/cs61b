@@ -5,8 +5,6 @@ import org.junit.Test;
 import student.StudentArrayDeque;
 import edu.princeton.cs.introcs.StdRandom;
 
-import java.util.ArrayDeque;
-
 public class TestArrayDequeEC {
     @Test
     public void test() {
@@ -39,5 +37,9 @@ public class TestArrayDequeEC {
                 assertEquals("Oh noooo!\nThis is bad:\n" + str + "The last step is wrong",ad.removeLast(), sd.removeLast());
             }
         }
+    }
+
+    public static void main(String[] args) {
+        jh61b.junit.TestRunner.runTests(TestArrayDequeEC.class);
     }
 }
