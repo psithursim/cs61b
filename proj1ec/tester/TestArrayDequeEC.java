@@ -28,7 +28,7 @@ public class TestArrayDequeEC {
                     continue;
                 }
                 str.append("removeFirst()\n");
-                assertEquals("Oh noooo!\nThis is bad:\n" + str + "The last step is wrong",ad.removeFirst(), sd.removeFirst());
+                assertEquals("Oh noooo!\nThis is bad:\n" + str,ad.removeFirst(), sd.removeFirst());
             } else {
                 if (ad.isEmpty()) {
                     continue;
