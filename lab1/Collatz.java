@@ -2,15 +2,17 @@
  *  @author YOUR NAME HERE
  */
 public class Collatz {
-    
-   /** Buggy implementation of nextNumber! */
+
+    /** Buggy implementation of nextNumber! */
+    /** 判断是否为偶数 */
     public static int nextNumber(int n) {
-        if (n  == 128) {
-            return 1;
-        } else if (n == 5) {
+        if (n % 2 == 1)
+        {
             return 3 * n + 1;
-        } else {
-            return n * 2;
+        }
+        else
+        {
+            return n / 2;
         }
     }
 
