@@ -2,8 +2,6 @@
  *  @author YOUR NAME HERE
  */
 public class Collatz {
-
-    /** 判断是否为偶数 */
     public static int nextNumber(int n) {
         if (n % 2 == 1)
         {
