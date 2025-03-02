@@ -1,6 +1,8 @@
 package capers;
 
 import java.io.File;
+import java.io.IOException;
+
 import static capers.Utils.*;
 
 /** A repository for Capers 
@@ -18,9 +20,10 @@ public class CapersRepository {
     static final File CWD = new File(System.getProperty("user.dir"));
 
     /** Main metadata folder. */
-    static final File CAPERS_FOLDER = null; // TODO Hint: look at the `join`
+    static final File CAPERS_FOLDER = join(CWD, ".capers"); // TODO Hint: look at the `join`
                                             //      function in Utils
 
+    static final File STORY_FILE = join(CAPERS_FOLDER, "story");
     /**
      * Does required filesystem operations to allow for persistence.
      * (creates any necessary folders or files)
@@ -32,6 +35,13 @@ public class CapersRepository {
      */
     public static void setupPersistence() {
         // TODO
+        CAPERS_FOLDER.mkdirs();
+        Dog.DOG_FOLDER.mkdirs();
+        try {
+            STORY_FILE.createNewFile();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     /**
@@ -41,6 +51,15 @@ public class CapersRepository {
      */
     public static void writeStory(String text) {
         // TODO
+        text += "\n";
+        if (STORY_FILE.length() != 0) {
+            String pre = readContentsAsString(STORY_FILE);
+            writeContents(STORY_FILE,  pre, text);
+        }
+        else {
+            writeContents(STORY_FILE, text);
+        }
+        System.out.println(readContentsAsString(STORY_FILE));
     }
 
     /**
@@ -50,6 +69,10 @@ public class CapersRepository {
      */
     public static void makeDog(String name, String breed, int age) {
         // TODO
+        Dog newdog = new Dog(name, breed, age);
+        newdog.saveDog();
+        String words = newdog.toString();
+        System.out.println(words);
     }
 
     /**
@@ -60,5 +83,10 @@ public class CapersRepository {
      */
     public static void celebrateBirthday(String name) {
         // TODO
+        Dog bsdog = Dog.fromFile(name);
+        if (bsdog != null) {
+            bsdog.haveBirthday();
+            bsdog.saveDog();
+        }
     }
 }
