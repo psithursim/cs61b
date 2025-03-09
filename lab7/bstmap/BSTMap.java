@@ -5,7 +5,7 @@ import java.util.HashSet;
 import java.util.Set;
 import java.util.Iterator;
 
-public class BSTMap<K extends Comparable, V> implements Map61B<K,V>
+public class BSTMap<K extends Comparable<K>, V> implements Map61B<K,V>
 {
     //成员变量
     private BSTNode root;
@@ -27,7 +27,7 @@ public class BSTMap<K extends Comparable, V> implements Map61B<K,V>
     }
 
     //辅助类
-    public class pair
+    private class pair
     {
         K key;
         V value;
@@ -41,7 +41,7 @@ public class BSTMap<K extends Comparable, V> implements Map61B<K,V>
     }
 
     //迭代器类
-    public class iterator implements Iterator<K>
+    private class iterator implements Iterator<K>
     {
         private int pos;
         private ArrayList<K> keys;
@@ -93,6 +93,14 @@ public class BSTMap<K extends Comparable, V> implements Map61B<K,V>
     {
         size = 0;
         root = null;
+    }
+
+    public void printInOrder()
+    {
+        for (K key : this)
+        {
+            System.out.print(get(key) + " ");
+        }
     }
 
     public boolean containsKey(K key)
